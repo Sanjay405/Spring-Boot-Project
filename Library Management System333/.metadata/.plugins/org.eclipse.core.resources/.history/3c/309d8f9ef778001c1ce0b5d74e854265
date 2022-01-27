@@ -1,0 +1,5 @@
+package com.trantor.repository;
+
+public class BookRepo {
+
+}

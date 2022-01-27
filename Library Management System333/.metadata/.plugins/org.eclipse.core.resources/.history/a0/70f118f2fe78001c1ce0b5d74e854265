@@ -1,0 +1,19 @@
+package com.trantor.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.trantor.dao.BookDAO;
+import com.trantor.entity.Book;
+
+@Service
+public class BookService {
+
+	@Autowired
+	private BookDAO bookDao;
+	
+	
+	public void saveData(Book book) {
+		bookDao.saveData(book);
+	}
+}

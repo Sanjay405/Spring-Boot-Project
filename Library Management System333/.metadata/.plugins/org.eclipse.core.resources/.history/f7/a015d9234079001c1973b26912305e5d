@@ -1,0 +1,49 @@
+package com.trantor.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.trantor.entity.Book;
+import com.trantor.services.BookService;
+
+@RestController
+@RequestMapping("/book")
+public class BookController {
+
+	@Autowired
+	private BookService bookService;
+
+	@PostMapping("/add")
+	public String saveBookData(@RequestBody Book book) {
+		bookService.saveData(book);
+		return "SuccessFully Added";
+	}
+
+	@GetMapping("/search")
+	private List<Book> getAllBooks() {
+		return bookService.getData();
+
+	}
+
+	@DeleteMapping("/delete")
+	public String delete(@RequestParam int id) {
+		bookService.deleteData(id);
+		return "Book Deleted";
+	}
+
+	@PutMapping("/update")
+	public String update(@RequestBody Book book, int id) {
+		bookService.updateBook(book, id);
+		return "Book Updated";
+	}
+
+}

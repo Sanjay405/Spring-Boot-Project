@@ -1,0 +1,18 @@
+package com.trantor.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.trantor.entity.Book;
+import com.trantor.repository.BookRepo;
+
+@Service
+public class BookService {
+
+	@Autowired
+	private BookRepo bookRepo;
+	
+	public void saveData(Book book) {
+		bookRepo.save(book);
+	}
+}

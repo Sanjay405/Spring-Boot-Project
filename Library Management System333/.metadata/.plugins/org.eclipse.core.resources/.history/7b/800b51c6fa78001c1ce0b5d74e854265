@@ -1,0 +1,5 @@
+package com.trantor.dao;
+
+public class BookDAO {
+
+}

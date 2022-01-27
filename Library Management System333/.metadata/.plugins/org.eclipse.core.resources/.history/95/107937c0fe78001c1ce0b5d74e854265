@@ -1,0 +1,27 @@
+package com.trantor.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.trantor.entity.Book;
+import com.trantor.repository.BookRepo;
+
+@Repository
+public class BookDAO {
+
+	@Autowired
+	private BookRepo bookRepo;
+	
+	public void saveData(Book book) {
+		 bookRepo.save(book);
+	}
+	
+	public int deleteData(int id) {
+		 bookRepo.deleteById(id);
+		return id;
+	}
+	
+	public void updateData(Book book) {
+		
+	}
+}

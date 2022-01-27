@@ -1,0 +1,5 @@
+package com.trantor.entity;
+
+public class Book {
+
+}

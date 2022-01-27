@@ -1,0 +1,24 @@
+package com.trantor.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.trantor.entity.Book;
+import com.trantor.services.BookService;
+
+@RestController
+	@RequestMapping("/book")
+	public class BookController {
+
+		@Autowired
+		private BookService bookService;
+
+		@PostMapping("/add")
+		public String saveBookData(@RequestBody Book book) {
+			bookService.saveData(book);
+			return "SuccessFully Added";
+		}
+}

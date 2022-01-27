@@ -1,0 +1,45 @@
+package com.trantor.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.trantor.entity.Book;
+import com.trantor.repository.BookRepo;
+
+@Repository
+public class BookDAO {
+
+	@Autowired
+	private BookRepo bookRepo;
+
+	public void saveData(Book book) {
+		bookRepo.save(book);
+	}
+	
+	public List<Book> getAllBooks() {
+		List<Book> book = new ArrayList<Book>();
+		bookRepo.findAll().forEach(books1 -> book.add(books1));
+		return book;
+	}
+
+	public void deleteData(int id) {
+		bookRepo.deleteById(id);
+
+	}
+
+	public void updateBook(Book book, int id) {
+		bookRepo.findById(id).flatMap(bookRepo::save(book));
+		bookRepo.save(book);
+		
+		return  repository.findById(id)
+        
+                .doOnNext(e->e.setId(id)))
+                .flatMap(repository::save)
+                .map(AppUtils::entityToDto);
+	} 
+
+	
+}
